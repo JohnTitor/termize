@@ -1,18 +1,12 @@
-sudo: false
 language: rust
 rust:
+  - 1.20.0 # MSRV
   - nightly
   - beta
   - stable
-matrix:
+jobs:
   allow_failures:
     - rust: nightly
 script:
   - cargo build --verbose
   - cargo test --all --all-features -- --nocapture
-addons:
-  apt:
-    packages:
-    - libcurl4-openssl-dev
-    - libelf-dev
-    - libdw-dev
