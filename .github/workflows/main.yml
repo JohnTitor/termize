@@ -50,15 +50,7 @@ jobs:
           toolchain: ${{ matrix.version }}-${{ matrix.toolchain }}
           default: true
 
-      - name: check nightly
-        if: matrix.version == 'nightly'
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
-          args: --all --benches --bins --examples --tests
-
-      - name: check stable
-        if: matrix.version == 'stable'
+      - name: cargo check
         uses: actions-rs/cargo@v1
         with:
           command: check
