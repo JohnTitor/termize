@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Install packages for 32bit environment
-        if: matrix.toolchain = 'i686-unknown-linux-gnu'
+        if: matrix.toolchain == 'i686-unknown-linux-gnu'
         run: sudo apt-get install gcc-multilib g++-multilib -y
 
       - name: Install ${{ matrix.version }}
