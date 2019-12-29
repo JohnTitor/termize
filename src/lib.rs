@@ -43,9 +43,6 @@
         unused_allocation,
         unused_qualifications,
         trivial_numeric_casts)]
-#![cfg_attr(not(any(feature = "lints", feature = "nightly")), forbid(unstable_features))]
-#![cfg_attr(feature = "lints", feature(plugin))]
-#![cfg_attr(feature = "lints", plugin(clippy))]
 
 #[cfg(not(target_os = "windows"))]
 extern crate libc;
