@@ -13,10 +13,8 @@ categories = ["command-line-interface"]
 
 [badges]
 travis-ci = {repository = "JohnTitor/termize"}
-appveyor = {repository = "JohnTitor/termize"}
 
 [dependencies]
-clippy = { version = "0.0.175", optional = true }
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
 libc = "0.2.20"
