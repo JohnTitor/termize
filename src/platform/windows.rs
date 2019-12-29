@@ -15,8 +15,8 @@ use winapi::um::wincon::{CONSOLE_SCREEN_BUFFER_INFO, COORD, SMALL_RECT};
 /// To get the dimensions of your terminal window, simply use the following:
 /// 
 /// ```no_run
-/// # use term_size;
-/// if let Some((w, h)) = term_size::dimensions() {
+/// # use termize;
+/// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
 ///     println!("Unable to get term size :(")
@@ -60,8 +60,8 @@ pub fn dimensions() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 /// 
 /// ```no_run
-/// # use term_size;
-/// if let Some((w, h)) = term_size::dimensions() {
+/// # use termize;
+/// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
 ///     println!("Unable to get term size :(")
