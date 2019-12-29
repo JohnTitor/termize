@@ -17,7 +17,7 @@ travis-ci = {repository = "JohnTitor/termize"}
 [dependencies]
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
-libc = "0.2.20"
+libc = "0.2.66"
 
 [target.'cfg(target_os = "windows")'.dependencies]
 winapi = { version = "0.3", features = ["wincon", "processenv", "winbase"] }
