@@ -17,7 +17,7 @@ First, add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-termize = "1"
+termize = "0.1.0"
 ```
 
 Next, add this to your crate root:
