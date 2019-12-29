@@ -1,11 +1,13 @@
 termize
 ====
 
-[![Crates.io](https://img.shields.io/crates/v/termize.svg)](https://crates.io/crates/termize) [![Crates.io](https://img.shields.io/crates/d/termize.svg)](https://crates.io/crates/termize) [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-MIT) [![license](http://img.shields.io/badge/license-Apache2.0-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-APACHE)
-
-Linux: [![Build Status](https://travis-ci.org/JohnTitor/termize.svg?branch=master)](https://travis-ci.org/JohnTitor/termize)
+[![Crates.io](https://img.shields.io/crates/v/termize.svg)](https://crates.io/crates/termize) [![Crates.io](https://img.shields.io/crates/d/termize.svg)](https://crates.io/crates/termize) [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-MIT) [![license](http://img.shields.io/badge/license-Apache2.0-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-APACHE) [![CI](https://github.com/JohnTitor/termize/workflows/CI/badge.svg)](https://github.com/JohnTitor/termize/workflows/CI)
 
 A Rust library to enable getting terminal sizes and dimensions
+
+**This is a fork repository, original is [here](https://github.com/clap-rs/term_size-rs).**
+
+MSRV (Minimal Supported Rust Version): 1.20.0
 
 [Documentation](https://docs.rs/termize)
 
@@ -31,14 +33,14 @@ fn main() {
   if let Some((w, h)) = termize::dimensions() {
     println!("Width: {}\nHeight: {}", w, h);
   } else {
-    println!("Unable to get term size :(")
+    println!("Unable to get term size :(");
   }
 }
 ```
 
 ## License
 
-Copyright Benjamin Sago, Kevin Knapp, and `termize` contributors.
+Copyright Benjamin Sago, Kevin Knapp, and `term_size` contributors.
 
 Licensed under either of
 
@@ -57,14 +59,6 @@ additional terms or conditions.
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## Minimum Version of Rust
-
-`termize` will officially support current stable Rust, minus two releases, but may work with prior releases as well. For example, current stable Rust at the time of this writing is 1.22.1, meaning `termize` is guaranteed to compile with 1.20.0 and newer.
-
-At the 1.23.0 stable release, `termize` will be guaranteed to compile with 1.21.0 and newer, etc.
-
-Upon bumping the minimum version of Rust (assuming it's within the stable-2 range), it must be clearly annotated in the [`CHANGELOG.md`](./CHANGELOG.md)
 
 ## Breaking Changes
 
