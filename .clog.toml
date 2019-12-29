@@ -1,5 +1,5 @@
 [clog]
-repository = "https://github.com/kbknapp/term_size-rs"
+repository = "https://github.com/JohnTitor/termize"
 outfile = "CHANGELOG.md"
 from-latest-tag = true
 

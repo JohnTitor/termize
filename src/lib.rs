@@ -1,4 +1,5 @@
-// Copyright ⓒ 2015-2017 Benjamin Sago, Kevin Knapp, and [`term_size` contributors.](https://github.com/kbknapp/term_size-rs/blob/master/CONTRIBUTORS.md).
+// Copyright ⓒ 2015-2017 Benjamin Sago, Kevin Knapp, and
+// [`term_size` contributors.](https://github.com/JohnTitor/termize/blob/master/CONTRIBUTORS.md).
 // 
 // Licensed under either of
 // 
@@ -26,14 +27,14 @@
 //! To get the dimensions of your terminal window, simply use the following:
 //! 
 //! ```no_run
-//! # use term_size;
-//! if let Some((w, h)) = term_size::dimensions() {
+//! # use termize;
+//! if let Some((w, h)) = termize::dimensions() {
 //!     println!("Width: {}\nHeight: {}", w, h);
 //! } else {
 //!     println!("Unable to get term size :(")
 //! }
 //! ```
-#![doc(html_root_url = "https://docs.rs/term_size/1.0.0-beta1")]
+#![doc(html_root_url = "https://docs.rs/termize/1.0.0-beta1")]
 #![deny(missing_docs, 
         missing_debug_implementations, 
         missing_copy_implementations, 
@@ -42,9 +43,6 @@
         unused_allocation,
         unused_qualifications,
         trivial_numeric_casts)]
-#![cfg_attr(not(any(feature = "lints", feature = "nightly")), forbid(unstable_features))]
-#![cfg_attr(feature = "lints", feature(plugin))]
-#![cfg_attr(feature = "lints", plugin(clippy))]
 
 #[cfg(not(target_os = "windows"))]
 extern crate libc;

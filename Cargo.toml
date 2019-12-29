@@ -1,22 +1,20 @@
 [package]
-name = "term_size"
-version = "1.0.0-beta1"
-authors = ["Kevin K. <kbknapp@gmail.com>", "Benjamin Sago <ogham@bsago.me>"]
+name = "termize"
+version = "0.1.0"
+authors = ["Kevin K. <kbknapp@gmail.com>", "Benjamin Sago <ogham@bsago.me>", "Yuki Okushi <huyuumi.dev@gmail.com>"]
 exclude = []
 description = "functions for determining terminal sizes and dimensions"
-repository = "https://github.com/kbknapp/term_size-rs.git"
-documentation = "https://docs.rs/term_size/"
+repository = "https://github.com/JohnTitor/termize.git"
+documentation = "https://docs.rs/termize/"
 readme = "README.md"
 license = "MIT/Apache-2.0"
 keywords = ["term", "terminal", "size", "width", "dimension"]
 categories = ["command-line-interface"]
 
 [badges]
-travis-ci = {repository = "kbknapp/term_size-rs"}
-appveyor = {repository = "kbknapp/term_size-rs"}
+travis-ci = {repository = "JohnTitor/termize"}
 
 [dependencies]
-clippy = { version = "0.0.175", optional = true }
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
 libc = "0.2.20"
@@ -26,11 +24,9 @@ winapi = { version = "0.3", features = ["wincon", "processenv", "winbase"] }
 
 [features]
 default     = []
-lints       = ["clippy", "nightly"]
 nightly     = [] # for building with nightly and unstable features
 unstable    = [] # for building with unstable features on stable Rust
 debug       = [] # for building with debug messages
-travis      = ["lints", "nightly"] # for building with travis-cargo
 
 [profile.release]
 opt-level = 3
