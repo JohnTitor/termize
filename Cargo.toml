@@ -11,9 +11,6 @@ license = "MIT/Apache-2.0"
 keywords = ["term", "terminal", "size", "width", "dimension"]
 categories = ["command-line-interface"]
 
-[badges]
-travis-ci = {repository = "JohnTitor/termize"}
-
 [dependencies]
 
 [target.'cfg(not(target_os = "windows"))'.dependencies]
