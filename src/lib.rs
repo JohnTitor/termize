@@ -1,4 +1,5 @@
-// Copyright ⓒ 2015-2017 Benjamin Sago, Kevin Knapp, and [`termize` contributors.](https://github.com/JohnTitor/termize/blob/master/CONTRIBUTORS.md).
+// Copyright ⓒ 2015-2017 Benjamin Sago, Kevin Knapp, and
+// [`term_size` contributors.](https://github.com/JohnTitor/termize/blob/master/CONTRIBUTORS.md).
 // 
 // Licensed under either of
 // 
