@@ -52,11 +52,11 @@ jobs:
           toolchain: ${{ matrix.version }}-${{ matrix.toolchain }}
           default: true
 
-      - name: cargo check
+      - name: cargo build
         uses: actions-rs/cargo@v1
         with:
-          command: check
-          args: --all --bins --examples --tests
+          command: build
+          args: --verbose
 
       - name: tests
         uses: actions-rs/cargo@v1
