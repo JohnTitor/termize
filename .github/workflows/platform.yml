@@ -8,7 +8,7 @@ on:
 
 jobs:
   check_platform_support:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -29,7 +29,6 @@ jobs:
           - 
 
     name: ${{ matrix.toolchain }}
-    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@master
