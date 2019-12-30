@@ -23,12 +23,6 @@ libc = "0.2.66"
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3.8", features = ["handleapi", "processenv", "wincon", "winbase"] }
 
-[features]
-default     = []
-nightly     = [] # for building with nightly and unstable features
-unstable    = [] # for building with unstable features on stable Rust
-debug       = [] # for building with debug messages
-
 [profile.release]
 opt-level = 3
 debug = false
@@ -52,10 +46,3 @@ rpath = false
 lto = false
 debug-assertions = true
 codegen-units = 2
-
-[profile.bench]
-opt-level = 3
-debug = false
-rpath = false
-lto = true
-debug-assertions = false
