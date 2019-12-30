@@ -1,23 +1,5 @@
-use libc::{c_int, c_ulong, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO};
+use libc::{c_int, c_ulong, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ};
 use std::mem::zeroed;
-
-// Unfortunately the actual command is not standardised...
-#[cfg(any(target_os = "linux", target_os = "android"))]
-static TIOCGWINSZ: c_ulong = 0x5413;
-
-#[cfg(any(
-    target_os = "macos",
-    target_os = "ios",
-    target_os = "bitrig",
-    target_os = "dragonfly",
-    target_os = "freebsd",
-    target_os = "netbsd",
-    target_os = "openbsd"
-))]
-static TIOCGWINSZ: c_ulong = 0x40087468;
-
-#[cfg(target_os = "solaris")]
-static TIOCGWINSZ: c_ulong = 0x5468;
 
 extern "C" {
     fn ioctl(fd: c_int, request: c_ulong, ...) -> c_int;
@@ -28,14 +10,14 @@ extern "C" {
 /// it can be used as a nil value.
 unsafe fn get_dimensions_any() -> winsize {
     let mut window: winsize = zeroed();
-    let mut result = ioctl(STDOUT_FILENO, TIOCGWINSZ, &mut window);
+    let mut result = ioctl(STDOUT_FILENO, TIOCGWINSZ.into(), &mut window);
 
     if result == -1 {
         window = zeroed();
-        result = ioctl(STDIN_FILENO, TIOCGWINSZ, &mut window);
+        result = ioctl(STDIN_FILENO, TIOCGWINSZ.into(), &mut window);
         if result == -1 {
             window = zeroed();
-            result = ioctl(STDERR_FILENO, TIOCGWINSZ, &mut window);
+            result = ioctl(STDERR_FILENO, TIOCGWINSZ.into(), &mut window);
             if result == -1 {
                 return zeroed();
             }
@@ -49,7 +31,7 @@ unsafe fn get_dimensions_any() -> winsize {
 /// it can be used as a nil value.
 unsafe fn get_dimensions_out() -> winsize {
     let mut window: winsize = zeroed();
-    let result = ioctl(STDOUT_FILENO, TIOCGWINSZ, &mut window);
+    let result = ioctl(STDOUT_FILENO, TIOCGWINSZ.into(), &mut window);
 
     if result != -1 {
         return window;
@@ -62,7 +44,7 @@ unsafe fn get_dimensions_out() -> winsize {
 /// it can be used as a nil value.
 unsafe fn get_dimensions_in() -> winsize {
     let mut window: winsize = zeroed();
-    let result = ioctl(STDIN_FILENO, TIOCGWINSZ, &mut window);
+    let result = ioctl(STDIN_FILENO, TIOCGWINSZ.into(), &mut window);
 
     if result != -1 {
         return window;
@@ -75,7 +57,7 @@ unsafe fn get_dimensions_in() -> winsize {
 /// it can be used as a nil value.
 unsafe fn get_dimensions_err() -> winsize {
     let mut window: winsize = zeroed();
-    let result = ioctl(STDERR_FILENO, TIOCGWINSZ, &mut window);
+    let result = ioctl(STDERR_FILENO, TIOCGWINSZ.into(), &mut window);
 
     if result != -1 {
         return window;
