@@ -1,9 +1,7 @@
 // Supress warnings for `TIOCGWINSZ.into()` since freebsd requires it.
 #![allow(clippy::identity_conversion)]
 
-use libc::{
-    c_int, c_ulong, ioctl, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ,
-};
+use libc::{ioctl, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ};
 use std::mem::zeroed;
 
 /// Runs the ioctl command. Returns (0, 0) if all of the streams are not to a terminal, or
