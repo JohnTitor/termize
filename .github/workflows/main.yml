@@ -29,12 +29,10 @@ jobs:
           os: ubuntu-latest
         - toolchain: x86_64-pc-windows-msvc
           os: windows-latest
-          arch: x64
         - toolchain: x86_64-pc-windows-gnu
           os: windows-latest
         - toolchain: i686-pc-windows-msvc
           os: windows-latest
-          arch: x86
         - toolchain: x86_64-apple-darwin
           os: macOS-latest
 
