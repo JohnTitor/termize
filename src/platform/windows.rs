@@ -19,7 +19,7 @@ use winapi::um::wincon::{CONSOLE_SCREEN_BUFFER_INFO, COORD, SMALL_RECT};
 /// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
-///     println!("Unable to get term size :(")
+///     println!("Unable to get term size :(");
 /// }
 /// ```
 pub fn dimensions() -> Option<(usize, usize)> {
@@ -66,7 +66,7 @@ pub fn dimensions() -> Option<(usize, usize)> {
 /// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
-///     println!("Unable to get term size :(")
+///     println!("Unable to get term size :(");
 /// }
 /// ```
 pub fn dimensions_stdout() -> Option<(usize, usize)> {

@@ -31,7 +31,7 @@
 //! if let Some((w, h)) = termize::dimensions() {
 //!     println!("Width: {}\nHeight: {}", w, h);
 //! } else {
-//!     println!("Unable to get term size :(")
+//!     println!("Unable to get term size :(");
 //! }
 //! ```
 #![doc(html_root_url = "https://docs.rs/termize/0.1.0")]

@@ -20,12 +20,6 @@ First, add the following to your `Cargo.toml`:
 termize = "0.1.0"
 ```
 
-Next, add this to your crate root:
-
-```rust
-extern crate termize;
-```
-
 To get the dimensions of your terminal window, simply use the following:
 
 ```rust
@@ -40,7 +34,7 @@ fn main() {
 
 ## License
 
-Copyright Benjamin Sago, Kevin Knapp, and `term_size` contributors.
+Copyright Benjamin Sago, Kevin Knapp, Yuki Okushi, and `term_size` contributors.
 
 Licensed under either of
 
@@ -59,11 +53,3 @@ additional terms or conditions.
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## Breaking Changes
-
-`termize` takes a similar policy to Rust and will bump the major version number upon breaking changes with only the following exceptions:
-
-* The breaking change is to fix a security concern
-* The breaking change is to be fixing a bug (i.e. relying on a bug as a feature)
-* The breaking change is a feature isn't used in the wild, or all users of said feature have given approval prior to the change
