@@ -4,16 +4,16 @@ use winapi::um::wincon::GetConsoleScreenBufferInfo;
 use winapi::um::wincon::{CONSOLE_SCREEN_BUFFER_INFO, COORD, SMALL_RECT};
 
 /// Query the current processes's output, returning its width and height as a
-/// number of characters. 
+/// number of characters.
 ///
 /// # Errors
-/// 
+///
 /// Returns `None` if the output isn't to a terminal.
-/// 
+///
 /// # Example
-/// 
+///
 /// To get the dimensions of your terminal window, simply use the following:
-/// 
+///
 /// ```no_run
 /// # use termize;
 /// if let Some((w, h)) = termize::dimensions() {
@@ -41,8 +41,10 @@ pub fn dimensions() -> Option<(usize, usize)> {
     };
 
     if unsafe { GetConsoleScreenBufferInfo(stdout_h, &mut console_data) } != 0 {
-        Some(((console_data.srWindow.Right - console_data.srWindow.Left) as usize,
-                (console_data.srWindow.Bottom - console_data.srWindow.Top) as usize))
+        Some((
+            (console_data.srWindow.Right - console_data.srWindow.Left) as usize,
+            (console_data.srWindow.Bottom - console_data.srWindow.Top) as usize,
+        ))
     } else {
         None
     }
@@ -52,13 +54,13 @@ pub fn dimensions() -> Option<(usize, usize)> {
 /// number of characters. Returns `None` if the output isn't to a terminal.
 ///
 /// # Errors
-/// 
+///
 /// Returns `None` if the output isn't to a terminal.
-/// 
+///
 /// # Example
-/// 
+///
 /// To get the dimensions of your terminal window, simply use the following:
-/// 
+///
 /// ```no_run
 /// # use termize;
 /// if let Some((w, h)) = termize::dimensions() {
@@ -67,20 +69,26 @@ pub fn dimensions() -> Option<(usize, usize)> {
 ///     println!("Unable to get term size :(")
 /// }
 /// ```
-pub fn dimensions_stdout() -> Option<(usize, usize)> { dimensions() }
+pub fn dimensions_stdout() -> Option<(usize, usize)> {
+    dimensions()
+}
 
 /// This isn't implemented for Windows
-/// 
+///
 /// # Panics
-/// 
+///
 /// This function `panic!`s unconditionally with the `unimplemented!`
 /// macro
-pub fn dimensions_stdin() -> Option<(usize, usize)> { unimplemented!() }
+pub fn dimensions_stdin() -> Option<(usize, usize)> {
+    unimplemented!()
+}
 
 /// This isn't implemented for Windows
-/// 
+///
 /// # Panics
-/// 
+///
 /// This function `panic!`s unconditionally with the `unimplemented!`
 /// macro
-pub fn dimensions_stderr() -> Option<(usize, usize)> { unimplemented!() }
+pub fn dimensions_stderr() -> Option<(usize, usize)> {
+    unimplemented!()
+}

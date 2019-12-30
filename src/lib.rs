@@ -1,11 +1,11 @@
 // Copyright ⓒ 2015-2017 Benjamin Sago, Kevin Knapp, and
 // [`term_size` contributors.](https://github.com/JohnTitor/termize/blob/master/CONTRIBUTORS.md).
-// 
+//
 // Licensed under either of
-// 
+//
 // * Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
 // * MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
-// 
+//
 // at your option. Unless specifically stated otherwise, all contributions will be licensed in the same manner.
 
 // The following was originally taken and adapated from exa source
@@ -21,11 +21,11 @@
 //!
 //! The size is needed when the user wants the output formatted into columns:
 //! the default grid view, or the hybrid grid-details view.
-//! 
+//!
 //! # Example
-//! 
+//!
 //! To get the dimensions of your terminal window, simply use the following:
-//! 
+//!
 //! ```no_run
 //! # use termize;
 //! if let Some((w, h)) = termize::dimensions() {
@@ -35,15 +35,17 @@
 //! }
 //! ```
 #![doc(html_root_url = "https://docs.rs/termize/1.0.0-beta1")]
-#![deny(missing_docs, 
-        missing_debug_implementations, 
-        missing_copy_implementations, 
-        trivial_casts,
-        unused_import_braces, 
-        unused_allocation,
-        unused_qualifications,
-        trivial_numeric_casts)]
+#![deny(
+    missing_docs,
+    missing_debug_implementations,
+    missing_copy_implementations,
+    trivial_casts,
+    unused_import_braces,
+    unused_allocation,
+    unused_qualifications,
+    trivial_numeric_casts
+)]
 
 // A facade to allow exposing functions depending on the platform
 mod platform;
-pub use crate::platform::{dimensions, dimensions_stdout, dimensions_stdin, dimensions_stderr};
+pub use crate::platform::{dimensions, dimensions_stderr, dimensions_stdin, dimensions_stdout};
