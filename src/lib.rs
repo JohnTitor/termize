@@ -34,7 +34,7 @@
 //!     println!("Unable to get term size :(")
 //! }
 //! ```
-#![doc(html_root_url = "https://docs.rs/termize/1.0.0-beta1")]
+#![doc(html_root_url = "https://docs.rs/termize/0.1.0")]
 #![deny(
     missing_docs,
     missing_debug_implementations,
