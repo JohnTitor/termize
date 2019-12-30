@@ -100,7 +100,7 @@ unsafe fn get_dimensions_err() -> winsize {
 /// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
-///     println!("Unable to get term size :(")
+///     println!("Unable to get term size :(");
 /// }
 /// ```
 pub fn dimensions() -> Option<(usize, usize)> {
@@ -130,7 +130,7 @@ pub fn dimensions() -> Option<(usize, usize)> {
 /// if let Some((w, h)) = termize::dimensions_stdout() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
-///     println!("Unable to get term size :(")
+///     println!("Unable to get term size :(");
 /// }
 /// ```
 pub fn dimensions_stdout() -> Option<(usize, usize)> {
@@ -160,7 +160,7 @@ pub fn dimensions_stdout() -> Option<(usize, usize)> {
 /// if let Some((w, h)) = termize::dimensions_stdin() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
-///     println!("Unable to get term size :(")
+///     println!("Unable to get term size :(");
 /// }
 /// ```
 pub fn dimensions_stdin() -> Option<(usize, usize)> {
@@ -190,7 +190,7 @@ pub fn dimensions_stdin() -> Option<(usize, usize)> {
 /// if let Some((w, h)) = termize::dimensions_stderr() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
-///     println!("Unable to get term size :(")
+///     println!("Unable to get term size :(");
 /// }
 /// ```
 pub fn dimensions_stderr() -> Option<(usize, usize)> {
