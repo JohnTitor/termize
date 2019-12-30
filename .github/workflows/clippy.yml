@@ -1,5 +1,11 @@
-on: push
 name: Clippy and rustfmt check
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
 jobs:
   clippy_check:
     runs-on: ubuntu-latest
