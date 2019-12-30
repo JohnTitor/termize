@@ -44,11 +44,6 @@
         unused_qualifications,
         trivial_numeric_casts)]
 
-#[cfg(not(target_os = "windows"))]
-extern crate libc;
-#[cfg(target_os = "windows")]
-extern crate winapi;
-
 // A facade to allow exposing functions depending on the platform
 mod platform;
-pub use platform::{dimensions, dimensions_stdout, dimensions_stdin, dimensions_stderr};
+pub use crate::platform::{dimensions, dimensions_stdout, dimensions_stdin, dimensions_stderr};
