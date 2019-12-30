@@ -77,7 +77,6 @@ unsafe fn get_dimensions_err() -> winsize {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
@@ -107,7 +106,6 @@ pub fn dimensions() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stdout() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
@@ -137,7 +135,6 @@ pub fn dimensions_stdout() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stdin() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
@@ -167,7 +164,6 @@ pub fn dimensions_stdin() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stderr() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {

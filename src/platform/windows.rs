@@ -1,3 +1,4 @@
+use winapi::um::handleapi::INVALID_HANDLE_VALUE;
 use winapi::um::processenv::GetStdHandle;
 use winapi::um::winbase::STD_OUTPUT_HANDLE;
 use winapi::um::wincon::GetConsoleScreenBufferInfo;
@@ -15,7 +16,6 @@ use winapi::um::wincon::{CONSOLE_SCREEN_BUFFER_INFO, COORD, SMALL_RECT};
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
@@ -32,6 +32,10 @@ pub fn dimensions() -> Option<(usize, usize)> {
     };
 
     let stdout_h = unsafe { GetStdHandle(STD_OUTPUT_HANDLE) };
+    if stdout_h == INVALID_HANDLE_VALUE {
+        return None;
+    }
+
     let mut console_data = CONSOLE_SCREEN_BUFFER_INFO {
         dwSize: null_coord,
         dwCursorPosition: null_coord,
@@ -62,7 +66,6 @@ pub fn dimensions() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {

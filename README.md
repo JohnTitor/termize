@@ -24,11 +24,11 @@ To get the dimensions of your terminal window, simply use the following:
 
 ```rust
 fn main() {
-  if let Some((w, h)) = termize::dimensions() {
-    println!("Width: {}\nHeight: {}", w, h);
-  } else {
-    println!("Unable to get term size :(");
-  }
+    if let Some((w, h)) = termize::dimensions() {
+        println!("Width: {}\nHeight: {}", w, h);
+    } else {
+        println!("Unable to get term size :(");
+    }
 }
 ```
 
