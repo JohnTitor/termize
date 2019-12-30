@@ -1,6 +1,6 @@
 [package]
 name = "termize"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Yuki Okushi <huyuumi.dev@gmail.com>"]
 edition = "2018"
 exclude = [".github/*", ".travis.yml", ".cirrus.yml"]

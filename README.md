@@ -17,7 +17,7 @@ First, add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-termize = "0.1.0"
+termize = "0.1"
 ```
 
 To get the dimensions of your terminal window, simply use the following:
