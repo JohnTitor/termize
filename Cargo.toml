@@ -13,7 +13,7 @@ keywords = ["term", "terminal", "size", "width", "dimension"]
 categories = ["command-line-interface"]
 
 [badges]
-cirrus-ci = { repository = "https://github.com/JohnTitor/termize" }
+cirrus-ci = { repository = "JohnTitor/termize" }
 
 [dependencies]
 
