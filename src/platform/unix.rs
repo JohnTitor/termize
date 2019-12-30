@@ -179,3 +179,54 @@ pub fn dimensions_stderr() -> Option<(usize, usize)> {
         Some((w.ws_col as usize, w.ws_row as usize))
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::dimensions;
+    use std::process::{Command, Output, Stdio};
+
+    #[cfg(target_os = "macos")]
+    fn stty_size() -> Output {
+        Command::new("stty")
+            .arg("-f")
+            .arg("/dev/stderr")
+            .arg("size")
+            .stderr(Stdio::inherit())
+            .output()
+            .unwrap()
+    }
+
+    #[cfg(not(target_os = "macos"))]
+    fn stty_size() -> Output {
+        Command::new("stty")
+            .arg("-F")
+            .arg("/dev/stderr")
+            .arg("size")
+            .stderr(Stdio::inherit())
+            .output()
+            .expect("failed to run `stty_size()`")
+    }
+
+    #[test]
+    fn test_shell() {
+        let output = stty_size();
+        let stdout = String::from_utf8(output.stdout).expect("failed to turn into String");
+        let mut data = stdout.split_whitespace();
+        let rs = data
+            .next()
+            .unwrap_or("0")
+            .parse::<usize>()
+            .expect("failed to parse rows");
+        let cs = data
+            .next()
+            .unwrap_or("0")
+            .parse::<usize>()
+            .expect("failed to parse cols");
+        println!("stdout: {}", stdout);
+        println!("rows: {}\ncols: {}", rs, cs);
+        if let Some((w, h)) = dimensions() {
+            assert_eq!(rs, h);
+            assert_eq!(cs, w);
+        }
+    }
+}

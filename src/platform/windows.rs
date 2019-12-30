@@ -95,3 +95,13 @@ pub fn dimensions_stdin() -> Option<(usize, usize)> {
 pub fn dimensions_stderr() -> Option<(usize, usize)> {
     unimplemented!()
 }
+
+// Just check if function works well. `dimensions()` on no terminal always
+// returns `None` like CI so don't check with `is_some()`. Please test with
+// with `--nocapture` on local, to check terminal size.
+#[test]
+fn just_check_work() {
+    if let Some((w, h)) = dimensions() {
+        println!("width: {}\nheight: {}", w, h);
+    }
+}
