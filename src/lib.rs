@@ -1,18 +1,3 @@
-// Copyright ⓒ 2015-2017 Benjamin Sago, Kevin Knapp, and
-// [`term_size` contributors.](https://github.com/JohnTitor/termize/blob/master/CONTRIBUTORS.md).
-//
-// Licensed under either of
-//
-// * Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
-// * MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
-//
-// at your option. Unless specifically stated otherwise, all contributions will be licensed in the same manner.
-
-// The following was originally taken and adapted from exa source
-// repo: https://github.com/ogham/exa
-// commit: b9eb364823d0d4f9085eb220233c704a13d0f611
-// license: MIT - Copyright (c) 2014 Benjamin Sago
-
 //! System calls for getting the terminal size.
 //!
 //! Getting the terminal size is performed using an ioctl command that takes
@@ -33,7 +18,6 @@
 //!     println!("Unable to get term size :(");
 //! }
 //! ```
-#![doc(html_root_url = "https://docs.rs/termize/0.1.0")]
 #![deny(
     missing_docs,
     missing_debug_implementations,
