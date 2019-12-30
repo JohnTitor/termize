@@ -8,7 +8,6 @@ on:
 
 jobs:
   check_platform_support:
-    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -26,9 +25,9 @@ jobs:
           - x86_64-unknown-dragonfly
           - x86_64-unknown-openbsd
           - x86_64-unknown-haiku
-          - 
 
     name: ${{ matrix.toolchain }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
@@ -36,8 +35,10 @@ jobs:
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable-${{ matrix.toolchain }}
+          toolchain: stable
+          target: ${{ matrix.toolchain }}
           default: true
+          profile: minimal
 
       - name: cargo check
         uses: actions-rs/cargo@v1
