@@ -40,21 +40,17 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Install packages for 32bit environment
+        if: matrix.toolchain == 'i686-unknown-linux-gnu'
+        run: sudo apt-get install gcc-multilib g++-multilib -y
+
       - name: Install ${{ matrix.version }}
         uses: actions-rs/toolchain@v1
         with:
           toolchain: ${{ matrix.version }}-${{ matrix.toolchain }}
           default: true
 
-      - name: check nightly
-        if: matrix.version == 'nightly'
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
-          args: --all --benches --bins --examples --tests
-
-      - name: check stable
-        if: matrix.version == 'stable'
+      - name: cargo check
         uses: actions-rs/cargo@v1
         with:
           command: check
