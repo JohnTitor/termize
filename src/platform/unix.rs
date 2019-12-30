@@ -1,3 +1,6 @@
+// Supress warnings for `TIOCGWINSZ.into()` since freebsd requires it.
+#![allow(clippy::identity_conversion)]
+
 use libc::{c_int, c_ulong, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ};
 use std::mem::zeroed;
 
