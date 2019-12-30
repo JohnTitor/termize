@@ -1,18 +1,19 @@
-
-use libc::{STDOUT_FILENO, STDIN_FILENO, STDERR_FILENO, c_int, c_ulong, winsize};
+use libc::{c_int, c_ulong, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO};
 use std::mem::zeroed;
 
 // Unfortunately the actual command is not standardised...
 #[cfg(any(target_os = "linux", target_os = "android"))]
 static TIOCGWINSZ: c_ulong = 0x5413;
 
-#[cfg(any(target_os = "macos",
-            target_os = "ios",
-            target_os = "bitrig",
-            target_os = "dragonfly",
-            target_os = "freebsd",
-            target_os = "netbsd",
-            target_os = "openbsd"))]
+#[cfg(any(
+    target_os = "macos",
+    target_os = "ios",
+    target_os = "bitrig",
+    target_os = "dragonfly",
+    target_os = "freebsd",
+    target_os = "netbsd",
+    target_os = "openbsd"
+))]
 static TIOCGWINSZ: c_ulong = 0x40087468;
 
 #[cfg(target_os = "solaris")]
@@ -83,17 +84,17 @@ unsafe fn get_dimensions_err() -> winsize {
 }
 
 /// Query the current processes's output (`stdout`), input (`stdin`), and error (`stderr`) in
-/// that order, in the attempt to dtermine terminal width. If one of those streams is actually
+/// that order, in the attempt to determine terminal width. If one of those streams is actually
 /// a tty, this function returns its width and height as a number of characters.
 ///
 /// # Errors
-/// 
+///
 /// If *all* of the streams are not ttys or return any errors this function will return `None`.
-/// 
+///
 /// # Example
-/// 
+///
 /// To get the dimensions of your terminal window, simply use the following:
-/// 
+///
 /// ```no_run
 /// # use termize;
 /// if let Some((w, h)) = termize::dimensions() {
@@ -112,18 +113,18 @@ pub fn dimensions() -> Option<(usize, usize)> {
     }
 }
 
-/// Query the current processes's output (`stdout`) *only*, in the attempt to dtermine
-/// terminal width. If that streams is actually a tty, this function returns its width
+/// Query the current processes's output (`stdout`) *only*, in the attempt to determine
+/// terminal width. If that stream is actually a tty, this function returns its width
 /// and height as a number of characters.
 ///
 /// # Errors
-/// 
+///
 /// If the stream is not a tty or return any errors this function will return `None`.
-/// 
+///
 /// # Example
-/// 
+///
 /// To get the dimensions of your terminal window, simply use the following:
-/// 
+///
 /// ```no_run
 /// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stdout() {
@@ -142,18 +143,18 @@ pub fn dimensions_stdout() -> Option<(usize, usize)> {
     }
 }
 
-/// Query the current processes's input (`stdin`) *only*, in the attempt to dtermine
-/// terminal width. If that streams is actually a tty, this function returns its width
+/// Query the current processes's input (`stdin`) *only*, in the attempt to determine
+/// terminal width. If that stream is actually a tty, this function returns its width
 /// and height as a number of characters.
 ///
 /// # Errors
-/// 
+///
 /// If the stream is not a tty or return any errors this function will return `None`.
-/// 
+///
 /// # Example
-/// 
+///
 /// To get the dimensions of your terminal window, simply use the following:
-/// 
+///
 /// ```no_run
 /// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stdin() {
@@ -173,17 +174,17 @@ pub fn dimensions_stdin() -> Option<(usize, usize)> {
 }
 
 /// Query the current processes's error output (`stderr`) *only*, in the attempt to dtermine
-/// terminal width. If that streams is actually a tty, this function returns its width
+/// terminal width. If that stream is actually a tty, this function returns its width
 /// and height as a number of characters.
 ///
 /// # Errors
-/// 
+///
 /// If the stream is not a tty or return any errors this function will return `None`.
-/// 
+///
 /// # Example
-/// 
+///
 /// To get the dimensions of your terminal window, simply use the following:
-/// 
+///
 /// ```no_run
 /// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stderr() {

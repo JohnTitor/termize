@@ -2,6 +2,7 @@
 name = "termize"
 version = "0.1.0"
 authors = ["Kevin K. <kbknapp@gmail.com>", "Benjamin Sago <ogham@bsago.me>", "Yuki Okushi <huyuumi.dev@gmail.com>"]
+edition = "2018"
 exclude = []
 description = "functions for determining terminal sizes and dimensions"
 repository = "https://github.com/JohnTitor/termize.git"
@@ -55,11 +56,3 @@ debug = false
 rpath = false
 lto = true
 debug-assertions = false
-
-[profile.doc]
-opt-level = 0
-debug = true
-rpath = false
-lto = false
-debug-assertions = true
-codegen-units = 4
