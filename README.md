@@ -7,7 +7,7 @@ A Rust library to enable getting terminal sizes and dimensions
 
 **This is a fork repository, original is [here](https://github.com/clap-rs/term_size-rs).**
 
-MSRV (Minimal Supported Rust Version): 1.31.1
+MSRV (Minimum Supported Rust Version): 1.31.1
 
 [Documentation](https://docs.rs/termize)
 
@@ -34,7 +34,7 @@ fn main() {
 
 ## License
 
-Copyright Benjamin Sago, Kevin Knapp, Yuki Okushi, and `term_size` contributors.
+Copyright Benjamin Sago, Kevin Knapp, Yuki Okushi, and `term_size`/`termize` contributors.
 
 Licensed under either of
 
