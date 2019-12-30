@@ -1,7 +1,7 @@
 termize
 ====
 
-[![Crates.io](https://img.shields.io/crates/v/termize.svg)](https://crates.io/crates/termize) [![Crates.io](https://img.shields.io/crates/d/termize.svg)](https://crates.io/crates/termize) [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-MIT) [![license](http://img.shields.io/badge/license-Apache2.0-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-APACHE) [![CI](https://github.com/JohnTitor/termize/workflows/CI/badge.svg)](https://github.com/JohnTitor/termize/workflows/CI)
+[![Crates.io](https://img.shields.io/crates/v/termize.svg)](https://crates.io/crates/termize) [![Crates.io](https://img.shields.io/crates/d/termize.svg)](https://crates.io/crates/termize) [![license](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-MIT) [![license](http://img.shields.io/badge/license-Apache2.0-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-APACHE) [![Actions](https://github.com/JohnTitor/termize/workflows/CI/badge.svg)](https://github.com/JohnTitor/termize/workflows/CI) [![Cirrus CI](https://api.cirrus-ci.com/github/JohnTitor/termize.svg)](https://cirrus-ci.com/github/JohnTitor/termize)
 
 A Rust library to enable getting terminal sizes and dimensions
 
@@ -24,11 +24,11 @@ To get the dimensions of your terminal window, simply use the following:
 
 ```rust
 fn main() {
-  if let Some((w, h)) = termize::dimensions() {
-    println!("Width: {}\nHeight: {}", w, h);
-  } else {
-    println!("Unable to get term size :(");
-  }
+    if let Some((w, h)) = termize::dimensions() {
+        println!("Width: {}\nHeight: {}", w, h);
+    } else {
+        println!("Unable to get term size :(");
+    }
 }
 ```
 

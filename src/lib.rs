@@ -27,7 +27,6 @@
 //! To get the dimensions of your terminal window, simply use the following:
 //!
 //! ```no_run
-//! # use termize;
 //! if let Some((w, h)) = termize::dimensions() {
 //!     println!("Width: {}\nHeight: {}", w, h);
 //! } else {

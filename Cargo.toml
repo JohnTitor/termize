@@ -5,26 +5,23 @@ authors = ["Yuki Okushi <huyuumi.dev@gmail.com>"]
 edition = "2018"
 exclude = [".github/*", ".travis.yml"]
 description = "functions for determining terminal sizes and dimensions"
-repository = "https://github.com/JohnTitor/termize.git"
-documentation = "https://docs.rs/termize/"
+repository = "https://github.com/JohnTitor/termize"
+documentation = "https://docs.rs/termize"
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 keywords = ["term", "terminal", "size", "width", "dimension"]
 categories = ["command-line-interface"]
 
+[badges]
+cirrus-ci = { repository = "https://github.com/JohnTitor/termize" }
+
 [dependencies]
 
-[target.'cfg(not(target_os = "windows"))'.dependencies]
+[target.'cfg(unix)'.dependencies]
 libc = "0.2.66"
 
-[target.'cfg(target_os = "windows")'.dependencies]
-winapi = { version = "0.3.8", features = ["wincon", "processenv", "winbase"] }
-
-[features]
-default     = []
-nightly     = [] # for building with nightly and unstable features
-unstable    = [] # for building with unstable features on stable Rust
-debug       = [] # for building with debug messages
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3.8", features = ["handleapi", "processenv", "wincon", "winbase"] }
 
 [profile.release]
 opt-level = 3
@@ -49,10 +46,3 @@ rpath = false
 lto = false
 debug-assertions = true
 codegen-units = 2
-
-[profile.bench]
-opt-level = 3
-debug = false
-rpath = false
-lto = true
-debug-assertions = false

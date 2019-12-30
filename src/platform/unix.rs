@@ -1,9 +1,8 @@
-use libc::{c_int, c_ulong, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ};
-use std::mem::zeroed;
+// Supress warnings for `TIOCGWINSZ.into()` since freebsd requires it.
+#![allow(clippy::identity_conversion)]
 
-extern "C" {
-    fn ioctl(fd: c_int, request: c_ulong, ...) -> c_int;
-}
+use libc::{ioctl, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ};
+use std::mem::zeroed;
 
 /// Runs the ioctl command. Returns (0, 0) if all of the streams are not to a terminal, or
 /// there is an error. (0, 0) is an invalid size to have anyway, which is why
@@ -78,7 +77,6 @@ unsafe fn get_dimensions_err() -> winsize {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
@@ -108,7 +106,6 @@ pub fn dimensions() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stdout() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
@@ -138,7 +135,6 @@ pub fn dimensions_stdout() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stdin() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
@@ -168,7 +164,6 @@ pub fn dimensions_stdin() -> Option<(usize, usize)> {
 /// To get the dimensions of your terminal window, simply use the following:
 ///
 /// ```no_run
-/// # use termize;
 /// if let Some((w, h)) = termize::dimensions_stderr() {
 ///     println!("Width: {}\nHeight: {}", w, h);
 /// } else {
