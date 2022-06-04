@@ -47,19 +47,9 @@ jobs:
         run: sudo apt install gcc-multilib g++-multilib -y
 
       - name: Install ${{ matrix.version }}
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: ${{ matrix.version }}-${{ matrix.toolchain }}
-          default: true
+        run: rustup override set ${{ matrix.version }}-${{ matrix.toolchain }}
 
-      - name: cargo build
-        uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --verbose
+      - run: cargo build
 
       - name: tests
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
-          args: --all --all-features -- --nocapture
+        run: cargo test -- --nocapture
