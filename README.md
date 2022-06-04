@@ -1,9 +1,9 @@
 termize
 ====
 
-[![Crates.io](https://img.shields.io/crates/v/termize.svg)](https://crates.io/crates/termize) [![Crates.io](https://img.shields.io/crates/d/termize.svg)](https://crates.io/crates/termize) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-MIT) [![license](https://img.shields.io/badge/license-Apache2.0-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-APACHE) [![Actions](https://github.com/JohnTitor/termize/workflows/CI/badge.svg)](https://github.com/JohnTitor/termize/workflows/CI) [![Cirrus CI](https://api.cirrus-ci.com/github/JohnTitor/termize.svg)](https://cirrus-ci.com/github/JohnTitor/termize)
+[![Crates.io](https://img.shields.io/crates/v/termize.svg)](https://crates.io/crates/termize) [![Crates.io](https://img.shields.io/crates/d/termize.svg)](https://crates.io/crates/termize) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-MIT) [![license](https://img.shields.io/badge/license-Apache2.0-blue.svg)](https://github.com/JohnTitor/termize/blob/master/LICENSE-APACHE) [![Actions](https://github.com/JohnTitor/termize/workflows/CI/badge.svg)](https://github.com/JohnTitor/termize/workflows/CI)
 
-A Rust library to enable getting terminal sizes and dimensions
+A Rust library to enable getting terminal sizes and dimensions.
 
 **This is a fork repository, original is [here](https://github.com/clap-rs/term_size-rs).**
 
