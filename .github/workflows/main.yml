@@ -24,17 +24,17 @@ jobs:
           - nightly
         include:
         - toolchain: x86_64-unknown-linux-gnu
-          os: ubuntu-latest
+          os: ubuntu-22.04
         - toolchain: i686-unknown-linux-gnu
-          os: ubuntu-latest
+          os: ubuntu-22.04
         - toolchain: x86_64-pc-windows-msvc
-          os: windows-latest
+          os: windows-2022
         - toolchain: x86_64-pc-windows-gnu
-          os: windows-latest
+          os: windows-2022
         - toolchain: i686-pc-windows-msvc
-          os: windows-latest
+          os: windows-2022
         - toolchain: x86_64-apple-darwin
-          os: macOS-latest
+          os: macos-12
 
     name: ${{ matrix.version }} - ${{ matrix.toolchain }}
     runs-on: ${{ matrix.os }}

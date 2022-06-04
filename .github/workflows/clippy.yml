@@ -8,7 +8,7 @@ on:
 
 jobs:
   clippy_check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@master
       - uses: actions-rs/toolchain@v1
