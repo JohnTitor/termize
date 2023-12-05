@@ -1,8 +1,8 @@
-use winapi::um::handleapi::INVALID_HANDLE_VALUE;
-use winapi::um::processenv::GetStdHandle;
-use winapi::um::winbase::STD_OUTPUT_HANDLE;
-use winapi::um::wincon::GetConsoleScreenBufferInfo;
-use winapi::um::wincon::{CONSOLE_SCREEN_BUFFER_INFO, COORD, SMALL_RECT};
+use windows_sys::Win32::Foundation::INVALID_HANDLE_VALUE;
+use windows_sys::Win32::System::Console::GetConsoleScreenBufferInfo;
+use windows_sys::Win32::System::Console::GetStdHandle;
+use windows_sys::Win32::System::Console::STD_OUTPUT_HANDLE;
+use windows_sys::Win32::System::Console::{CONSOLE_SCREEN_BUFFER_INFO, COORD, SMALL_RECT};
 
 /// Query the current processes's output, returning its width and height as a
 /// number of characters.
