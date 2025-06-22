@@ -1,7 +1,7 @@
 [package]
 name = "termize"
 version = "0.1.1"
-edition = "2018"
+edition = "2024"
 exclude = [".github/*"]
 description = "functions for determining terminal sizes and dimensions"
 repository = "https://github.com/JohnTitor/termize"
@@ -14,7 +14,7 @@ categories = ["command-line-interface"]
 [dependencies]
 
 [target.'cfg(unix)'.dependencies]
-libc = "0.2.66"
+libc = "0.2.174"
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3.8", features = ["handleapi", "processenv", "wincon", "winbase"] }

@@ -13,38 +13,31 @@ jobs:
       matrix:
         toolchain:
           - x86_64-unknown-linux-gnu
-          - i686-unknown-linux-gnu
           - x86_64-pc-windows-msvc
           - x86_64-pc-windows-gnu
-          - i686-pc-windows-msvc
+          - aarch64-apple-darwin
           - x86_64-apple-darwin
         version:
-          - 1.31.1 # MSRV
+          - 1.85.0 # MSRV
           - stable
           - nightly
         include:
         - toolchain: x86_64-unknown-linux-gnu
-          os: ubuntu-22.04
-        - toolchain: i686-unknown-linux-gnu
-          os: ubuntu-22.04
+          os: ubuntu-latest
         - toolchain: x86_64-pc-windows-msvc
-          os: windows-2022
+          os: windows-latest
         - toolchain: x86_64-pc-windows-gnu
-          os: windows-2022
-        - toolchain: i686-pc-windows-msvc
-          os: windows-2022
+          os: windows-latest
+        - toolchain: aarch64-apple-darwin
+          os: macos-latest
         - toolchain: x86_64-apple-darwin
-          os: macos-12
+          os: macos-latest
 
     name: ${{ matrix.version }} - ${{ matrix.toolchain }}
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install packages for 32bit environment
-        if: matrix.toolchain == 'i686-unknown-linux-gnu'
-        run: sudo apt install gcc-multilib g++-multilib -y
+      - uses: actions/checkout@v4
 
       - name: Install ${{ matrix.version }}
         run: rustup override set ${{ matrix.version }}-${{ matrix.toolchain }}
