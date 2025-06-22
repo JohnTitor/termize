@@ -1,6 +1,6 @@
 [package]
 name = "termize"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 exclude = [".github/*"]
 description = "functions for determining terminal sizes and dimensions"
@@ -9,7 +9,8 @@ documentation = "https://docs.rs/termize"
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 keywords = ["term", "terminal", "size", "width", "dimension"]
-categories = ["command-line-interface"]
+categories = ["command-line-interface", "os"]
+rust-version = "1.85.0"
 
 [dependencies]
 
@@ -17,7 +18,7 @@ categories = ["command-line-interface"]
 libc = "0.2.174"
 
 [target.'cfg(windows)'.dependencies]
-windows-sys = { version = "0.59.0", features = ["Win32_Foundation", "Win32_System_Console"] }
+windows-sys = { version = "0.60.2", features = ["Win32_Foundation", "Win32_System_Console"] }
 
 [profile.release]
 opt-level = 3
