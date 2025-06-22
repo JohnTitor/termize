@@ -1,24 +1,24 @@
-// Supress warnings for `TIOCGWINSZ.into()` since freebsd requires it.
-#![allow(clippy::identity_conversion)]
+// Suppress warnings for `TIOCGWINSZ.into()` since freebsd requires it.
+#![allow(clippy::useless_conversion)]
 
-use libc::{ioctl, winsize, STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ};
+use libc::{STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ, ioctl, winsize};
 use std::mem::zeroed;
 
 /// Runs the ioctl command. Returns (0, 0) if all of the streams are not to a terminal, or
 /// there is an error. (0, 0) is an invalid size to have anyway, which is why
 /// it can be used as a nil value.
 unsafe fn get_dimensions_any() -> winsize {
-    let mut window: winsize = zeroed();
-    let mut result = ioctl(STDOUT_FILENO, TIOCGWINSZ.into(), &mut window);
+    let mut window: winsize = unsafe { zeroed() };
+    let mut result = unsafe { ioctl(STDOUT_FILENO, TIOCGWINSZ.into(), &mut window) };
 
     if result == -1 {
-        window = zeroed();
-        result = ioctl(STDIN_FILENO, TIOCGWINSZ.into(), &mut window);
+        window = unsafe { zeroed() };
+        result = unsafe { ioctl(STDIN_FILENO, TIOCGWINSZ.into(), &mut window) };
         if result == -1 {
-            window = zeroed();
-            result = ioctl(STDERR_FILENO, TIOCGWINSZ.into(), &mut window);
+            window = unsafe { zeroed() };
+            result = unsafe { ioctl(STDERR_FILENO, TIOCGWINSZ.into(), &mut window) };
             if result == -1 {
-                return zeroed();
+                return unsafe { zeroed() };
             }
         }
     }
@@ -29,39 +29,39 @@ unsafe fn get_dimensions_any() -> winsize {
 /// there is an error. (0, 0) is an invalid size to have anyway, which is why
 /// it can be used as a nil value.
 unsafe fn get_dimensions_out() -> winsize {
-    let mut window: winsize = zeroed();
-    let result = ioctl(STDOUT_FILENO, TIOCGWINSZ.into(), &mut window);
+    let mut window: winsize = unsafe { zeroed() };
+    let result = unsafe { ioctl(STDOUT_FILENO, TIOCGWINSZ.into(), &mut window) };
 
     if result != -1 {
         return window;
     }
-    zeroed()
+    unsafe { zeroed() }
 }
 
 /// Runs the ioctl command. Returns (0, 0) if the input is not to a terminal, or
 /// there is an error. (0, 0) is an invalid size to have anyway, which is why
 /// it can be used as a nil value.
 unsafe fn get_dimensions_in() -> winsize {
-    let mut window: winsize = zeroed();
-    let result = ioctl(STDIN_FILENO, TIOCGWINSZ.into(), &mut window);
+    let mut window: winsize = unsafe { zeroed() };
+    let result = unsafe { ioctl(STDIN_FILENO, TIOCGWINSZ.into(), &mut window) };
 
     if result != -1 {
         return window;
     }
-    zeroed()
+    unsafe { zeroed() }
 }
 
 /// Runs the ioctl command. Returns (0, 0) if the error is not to a terminal, or
 /// there is an error. (0, 0) is an invalid size to have anyway, which is why
 /// it can be used as a nil value.
 unsafe fn get_dimensions_err() -> winsize {
-    let mut window: winsize = zeroed();
-    let result = ioctl(STDERR_FILENO, TIOCGWINSZ.into(), &mut window);
+    let mut window: winsize = unsafe { zeroed() };
+    let result = unsafe { ioctl(STDERR_FILENO, TIOCGWINSZ.into(), &mut window) };
 
     if result != -1 {
         return window;
     }
-    zeroed()
+    unsafe { zeroed() }
 }
 
 /// Query the current processes's output (`stdout`), input (`stdin`), and error (`stderr`) in
