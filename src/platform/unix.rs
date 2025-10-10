@@ -2,7 +2,7 @@
 #![allow(clippy::useless_conversion)]
 
 use libc::{STDERR_FILENO, STDIN_FILENO, STDOUT_FILENO, TIOCGWINSZ, ioctl, winsize};
-use std::{fs::File, mem::zeroed, os::fd::IntoRawFd};
+use std::{fs::File, mem::zeroed, os::fd::AsRawFd};
 
 /// Runs the ioctl command. Returns (0, 0) if all of the streams are not to a terminal, or
 /// there is an error. (0, 0) is an invalid size to have anyway, which is why
@@ -23,9 +23,8 @@ unsafe fn get_dimensions_any() -> winsize {
                 let Ok(tty) = File::options().read(true).open("/dev/tty") else {
                     return unsafe { zeroed() };
                 };
-                let tty_fd = tty.into_raw_fd();
-                result = unsafe { ioctl(tty_fd, TIOCGWINSZ.into(), &mut window) };
-                if unsafe { libc::close(tty_fd) } == -1 || result == -1 {
+                result = unsafe { ioctl(tty.as_raw_fd(), TIOCGWINSZ.into(), &mut window) };
+                if result == -1 {
                     return unsafe { zeroed() };
                 }
             }
