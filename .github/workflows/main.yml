@@ -35,6 +35,8 @@ jobs:
 
     name: ${{ matrix.version }} - ${{ matrix.toolchain }}
     runs-on: ${{ matrix.os }}
+    permissions:
+      issues: write
 
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
@@ -46,3 +48,9 @@ jobs:
 
       - name: tests
         run: cargo test -- --nocapture
+
+      - name: deny
+        if: matrix.version == 'nightly' && matrix.toolchain == 'x86_64-unknown-linux-gnu'
+        uses: JohnTitor/cargo-deny-action@issue-on-failure
+        with:
+          create-issue-on-fail: true

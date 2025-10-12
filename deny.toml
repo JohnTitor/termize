@@ -1,0 +1,8 @@
+[licenses]
+confidence-threshold = 0.90
+allow = [
+]
+private = { ignore = true }
+
+[bans]
+multiple-versions = "deny"
