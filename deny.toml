@@ -1,0 +1,9 @@
+[licenses]
+confidence-threshold = 0.90
+allow = [
+    "Apache-2.0"
+]
+private = { ignore = true }
+
+[bans]
+multiple-versions = "deny"
